@@ -1,16 +1,30 @@
 
 #include <iostream>
 #include <algorithm>
+#include <vector>
 using namespace std;
 
 int main() {
-    int n = 4;
-    int capacity = 8;
+    int n , capacity;
+    cout << "Enter number of items: ";
+    cin >> n;
 
-    int weight[] = {1, 3, 4, 5};
-    int profit[] = {10, 40, 50, 70};
 
-    int dp[5][9] = {0};
+    int weight[n], profit[n];
+
+    cout << "Enter weights:\n";
+    for (int i = 0; i < n; i++)
+        cin >> weight[i];
+
+    cout << "Enter profits:\n";
+    for (int i = 0; i < n; i++)
+        cin >> profit[i];
+
+    cout << "Enter knapsack capacity: ";
+    cin >> capacity;
+
+
+    vector<vector<int>> dp(n+1, vector<int>(capacity+1, 0));
 
     // Dynamic Programming
     for (int i = 1; i <= n; i++) {
