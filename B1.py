@@ -163,15 +163,3 @@ print("R2 Score:", rf_r2)
 print("RMSE:", rf_rmse)
 
 
-# 11. Predict Fare for a New Ride
-
-new_ride = pd.DataFrame([{
-    "passenger_count": 2,
-    "hour": 10,
-    "day": 15,
-    "distance": 5.0
-}])
-
-prediction = rf.predict(new_ride)
-
-print("\nPredicted Uber Fare:", prediction[0])
