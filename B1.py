@@ -38,24 +38,7 @@ df["day"] = df["pickup_datetime"].dt.day
 
 # 3. Calculate Distance using Haversine Formula
 
-def calculate_distance(row):
 
-    lat1 = np.radians(row["pickup_latitude"])
-    lon1 = np.radians(row["pickup_longitude"])
-
-    lat2 = np.radians(row["dropoff_latitude"])
-    lon2 = np.radians(row["dropoff_longitude"])
-
-    dlat = lat2 - lat1
-    dlon = lon2 - lon1
-
-    a = (np.sin(dlat/2)**2 +
-         np.cos(lat1) * np.cos(lat2) *
-         np.sin(dlon/2)**2)
-
-    c = 2 * np.arcsin(np.sqrt(a))
-
-    return 6371 * c
 
 df = df[
     df["pickup_latitude"].between(-90, 90) &
