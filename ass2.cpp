@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <queue>
 using namespace std;
@@ -72,11 +71,25 @@ void huffman(char chars[], int freq[], int n) {
 
 int main() {
 
-    char chars[] = {'A', 'B', 'C', 'D', 'E'};
-    int freq[] = {5, 9, 12, 13, 16};
+    int n;
 
-    int n = 5;
+    cout << "Enter number of characters: ";
+    cin >> n;
+
+    char chars[n];
+    int freq[n];
+
+    cout << "Enter characters:\n";
+    for (int i = 0; i < n; i++) {
+        cin >> chars[i];
+    }
+
+    cout << "Enter frequencies:\n";
+    for (int i = 0; i < n; i++) {
+        cin >> freq[i];
+    }
 
     huffman(chars, freq, n);
 
+    return 0;
 }
