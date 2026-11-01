@@ -20,7 +20,8 @@ contract BankAccount {
 
         balance -= amount;
 
-        payable(msg.sender).transfer(amount);
+        (bool success, ) = payable(msg.sender).call{value: amount}("");
+        require(success, "Transfer failed");
     }
 
     // Display balance
