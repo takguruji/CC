@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-int n = 4;
+int n;
 int board[10][10] = {0};
 
 // Check whether queen can be placed
@@ -53,10 +53,15 @@ bool solve(int row) {
 
 int main() {
 
-    // Place first queen
-    board[0][1] = 1;
+    cout << "Enter number of queens: ";
+    cin >> n;
 
-    if (solve(1)) {
+     if (n > 10 || n <= 0) {
+        cout << "Enter n between 1 and 10";
+        return 0;
+    }
+
+    if (solve(0)) {
 
         cout << "Solution:\n";
 
