@@ -47,10 +47,6 @@ df = df[
     df["dropoff_longitude"].between(-180, 180)
 ]
 
-
-df["distance"] = df.apply(calculate_distance, axis=1)
-
-
 # 4. Outlier Detection using IQR
 
 Q1 = df["fare_amount"].quantile(0.25)
