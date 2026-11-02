@@ -1,4 +1,4 @@
-
+```python
 # Email Spam Classification using KNN and SVM
 
 import pandas as pd
@@ -10,12 +10,9 @@ from sklearn.svm import SVC
 
 from sklearn.metrics import (
     accuracy_score,
-    precision_score,
-    recall_score,
-    f1_score,
+    confusion_matrix,
     classification_report
 )
-
 
 # 1. Create Dataset
 
@@ -64,12 +61,10 @@ df = pd.DataFrame(data)
 print("Dataset:")
 print(df.head())
 
-
 # 2. Separate Features and Target
 
 X = df["email"]
 y = df["label"]
-
 
 # 3. Convert Text into Numerical Data
 
@@ -79,24 +74,21 @@ vectorizer = TfidfVectorizer()
 
 X_train, X_test, y_train, y_test = train_test_split(
     X, y,
-    test_size=0.25
+    test_size=0.25,
+    random_state=42,
+    stratify=y
 )
 
-# Fit vectorizer only on training data
 X_train = vectorizer.fit_transform(X_train)
 X_test = vectorizer.transform(X_test)
 
-
 # 5. KNN Model
 
-knn = KNeighborsClassifier(
-    n_neighbors=3
-)
+knn = KNeighborsClassifier(n_neighbors=3)
 
 knn.fit(X_train, y_train)
 
 knn_pred = knn.predict(X_test)
-
 
 # 6. SVM Model
 
@@ -106,29 +98,24 @@ svm.fit(X_train, y_train)
 
 svm_pred = svm.predict(X_test)
 
-
 # 7. Performance Evaluation
 
 def evaluate_model(name, actual, predicted):
+
     print("\n", name)
-    print("Accuracy:", accuracy_score(actual, predicted))
 
-    print("Precision:", precision_score(actual, predicted,
-                                        pos_label='spam', zero_division=0))
+    print("Accuracy Score:")
+    print(accuracy_score(actual, predicted))
 
-    print("Recall:", recall_score(actual, predicted,
-                                   pos_label='spam', zero_division=0))
-
-    print("F1 Score:", f1_score(actual, predicted,
-                                pos_label='spam', zero_division=0))
+    print("\nConfusion Matrix:")
+    print(confusion_matrix(actual, predicted, labels=["spam", "ham"]))
 
     print("\nClassification Report:")
-    print(classification_report(actual, predicted))
-
+    print(classification_report(actual, predicted, zero_division=0))
 
 # 8. Compare Both Models
 
 evaluate_model("KNN Performance", y_test, knn_pred)
 
 evaluate_model("SVM Performance", y_test, svm_pred)
-
+```
