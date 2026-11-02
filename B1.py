@@ -65,8 +65,7 @@ print(df.shape)
 # 5. Correlation Analysis
 
 features = [
-    "fare_amount", "passenger_count",
-    "hour", "day", "distance"
+    "fare_amount", "pickup_longitude", "pickup_latitude", "dropoff_longitude", "dropoff_latitude", "passenger_count", "hour", "day"
 ]
 
 correlation = df[features].corr()
@@ -82,7 +81,7 @@ plt.show()
 # 6. Select Features and Target
 
 X = df[[
-    "passenger_count", "hour", "day", "distance"
+    "fare_amount", "pickup_longitude", "pickup_latitude", "dropoff_longitude", "dropoff_latitude", "passenger_count", "hour", "day"
 ]]
 
 y = df["fare_amount"]
