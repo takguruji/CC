@@ -1,4 +1,4 @@
-```python
+
 # Email Spam Classification using KNN and SVM
 
 import pandas as pd
@@ -118,4 +118,4 @@ def evaluate_model(name, actual, predicted):
 evaluate_model("KNN Performance", y_test, knn_pred)
 
 evaluate_model("SVM Performance", y_test, svm_pred)
-```
+
