@@ -36,10 +36,6 @@ df["day"] = df["pickup_datetime"].dt.day
 
 
 
-# 3. Calculate Distance using Haversine Formula
-
-
-
 df = df[
     df["pickup_latitude"].between(-90, 90) &
     df["dropoff_latitude"].between(-90, 90) &
