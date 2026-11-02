@@ -81,7 +81,7 @@ plt.show()
 # 6. Select Features and Target
 
 X = df[[
-    "fare_amount", "pickup_longitude", "pickup_latitude", "dropoff_longitude", "dropoff_latitude", "passenger_count", "hour", "day"
+    "pickup_longitude", "pickup_latitude", "dropoff_longitude", "dropoff_latitude", "passenger_count", "hour", "day"
 ]]
 
 y = df["fare_amount"]
